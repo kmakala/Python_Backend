@@ -39,10 +39,10 @@ jobs:
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy py-backend \
-        --image= ${{env.DOCKER_IMAGE_PATH}}/${{env.DOCKER_NAME}}:${{ github.run_number }} \
+        --image=${{env.DOCKER_IMAGE_PATH}}/${{env.DOCKER_NAME}}:${{ github.run_number }} \
         --platform=managed \
-        --region= ${{env.GCP_REGION}} \
-        --service-account= ${{env.SERVICE_ACCOUNT}} \
+        --region=${{env.GCP_REGION}} \
+        --service-account=${{env.SERVICE_ACCOUNT}} \
         --allow-unauthenticated \
         --min-instances=1 \
         --max-instances=2 \

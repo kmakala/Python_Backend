@@ -39,7 +39,7 @@ jobs:
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy py-backend \
-        --image= ${{env.DOCKER_IMAGE_PATH}} \
+        --image= ${{env.DOCKER_IMAGE_PATH}}/${{env.DOCKER_NAME}}:${{ github.run_number }} \
         --platform=managed \
         --region= ${{env.GCP_REGION}} \
         --service-account= ${{env.SERVICE_ACCOUNT}} \
@@ -48,3 +48,8 @@ jobs:
         --max-instances=2 \
         --memory=512Mi \
         --cpu=1
+
+    - name: Success message
+      run: |
+        echo "Deployment to Cloud Run successful!"
+       
